@@ -81,8 +81,8 @@ public class Principal{
   public static void drawPoint(int i, int j, DRobot dr) {
     double delta = Settings.end.x - Settings.start.x;
     delta /= cmap.length;
-    int x = Settings.start.x + (int)delta*i;
-    int y = Settings.start.y + (int)delta*j;
+    int x = (int) (Settings.start.x + delta*i );
+    int y = (int)( Settings.start.y + delta*j );
     dr.clickAt(x, y);
   }
 
