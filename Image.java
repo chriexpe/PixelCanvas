@@ -2,12 +2,13 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Color;
 
 public class Image{
 
   private BufferedImage image;
   // matrix with the RGB from each pixel
-  private int[][] matrix;
+  private Color[][] matrix;
 
   /**
   * Read the image from disk
@@ -30,14 +31,18 @@ public class Image{
     int width = image.getWidth();
     int heigth = image.getHeight();
 
-    matrix = new int[ width ][ heigth ];
+    matrix = new Color[ width ][ heigth ];
 
     for ( int i = 0; i < width; i++) {
       for ( int j = 0; j < heigth; j++) {
 
-        matrix[i][j] = image.getRGB( i, j );
+        matrix[i][j] = new Color( image.getRGB( i, j ) );
       }
     }
   }// end method imageToMatrix
+
+  public Color[][] getMatrix( ){
+    return this.matrix;
+  }
 
 }// end class Image
