@@ -44,14 +44,21 @@ public class Principal{
 
   public static void main(String [] args){
 
-    // original image
-    Image goma = new Image( "Fotos/gv3.bmp" );
+    for (int number =1; number <= 5; number++) {
 
-    // image edited
-    Image edit = editImage( goma, Distance.EUCLIDIAN );
+      // original image
+      Image goma = new Image( "Fotos/gv"+number+".bmp" );
 
-    // save image in disk
-    edit.saveImage( "Fotos/gv3Changed", "bmp" );
+      // image edited
+      Image editChess = editImage( goma, Distance.CHESS );
+      Image editManhattan = editImage( goma, Distance.MANHATTAN );
+      Image editEuclidian = editImage( goma, Distance.EUCLIDIAN );
+
+      // save image in disk
+      editChess.saveImage( "Fotos/gv"+number+"Chess", "bmp" );
+      editManhattan.saveImage( "Fotos/gv"+number+"Manhattan", "bmp" );
+      editEuclidian.saveImage( "Fotos/gv"+number+"Euclidian", "bmp" );
+    }
 
   }// end main
 }
