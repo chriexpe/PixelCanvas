@@ -24,10 +24,34 @@ public class Principal{
     new Color( 130, 0, 128)
   };
 
-  public static void main(String [] args){
-    Image goma = new Image( "Goma.bmp" );
-    Image cores = new Image( "Cores.bmp" );
+  /**
+  * Edit a image to pixelCanvas colors
+  */
+  public static Image editImage( Image image ){
 
-    System.out.println( Distance.minEuclidian( goma.getMatrix()[22][36], palette ) );
+    Color[][] changed = new Color[ image.getWidth() ][ image.getHeight() ];
+
+    // for each pixel
+    for ( int i =0; i < changed.length; i++) {
+      for ( int j=0 ; j < changed[0].length; j++) {
+        changed[i][j] = palette[ Distance.minEuclidian( image.getMatrix()[i][j], palette ) ];
+      }
+    }
+
+    // transform the matrix to a image
+    return ( new Image( changed ) );
   }
+
+  public static void main(String [] args){
+
+    // original image
+    Image goma = new Image( "Goma.bmp" );
+
+    // image edited
+    Image edit = editImage( goma );
+
+    // save image in disk
+    edit.saveImage( "Changed", "bmp" );
+
+  }// end main
 }
