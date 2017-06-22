@@ -1,6 +1,23 @@
 import java.awt.Color;
 
 public class Distance{
+  
+  public static double chess( Color c1, Color c2 ){
+
+    double distance = Math.max(Math.max(Math.abs(c1.getRed() - c2.getRed()), Math.abs(c1.getGreen() - c2.getGreen())), 
+                               Math.abs(c1.getBlue() - c2.getBlue()));
+
+    return distance;
+  }
+  
+  public static double manhattan( Color c1, Color c2 ){
+
+    double distanciaR = Math.abs( c1.getRed() - c2.getRed() );
+    double distanciaG = Math.abs( c1.getGreen() - c2.getGreen() );
+    double distanciaB = Math.abs( c1.getBlue() - c2.getBlue() );
+
+    return distanciaR + distanciaG + distanciaB;
+  }
 
   public static double euclidian( Color c1, Color c2 ){
 
