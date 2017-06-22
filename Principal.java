@@ -45,13 +45,13 @@ public class Principal{
   public static void main(String [] args){
 
     // original image
-    Image goma = new Image( "Goma.bmp" );
+    Image goma = new Image( "Fotos/gv3.bmp" );
 
     // image edited
     Image edit = editImage( goma );
 
     // save image in disk
-    edit.saveImage( "Changed", "bmp" );
+    edit.saveImage( "Fotos/gv3Changed", "bmp" );
 
   }// end main
 }
