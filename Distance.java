@@ -11,4 +11,25 @@ public class Distance{
     return distanciaR + distanciaG + distanciaB;
   }
 
+  /**
+  * Acha a cor mais proxima dentro da paleta
+  */
+  public static int minEuclidian( Color color, Color [] array ){
+    double minDistance = Integer.MAX_VALUE;
+    int pos = -1;
+
+    for ( int i = 0; i < array.length; i++ ) {
+
+      double distance = euclidian( color, array[i] );
+
+      if( distance < minDistance ){
+        minDistance = distance;
+        pos = i;
+      }
+
+    }
+
+    return pos;
+  }
+
 }
