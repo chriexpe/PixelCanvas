@@ -67,7 +67,39 @@ public class Principal{
 
   public static void start() {
     DRobot dr = new DRobot();
-    int i = 0;
+
+    // ultima cor usada
+    int atualColor = cmap[0][0];
+
+    for ( int i = Settings.firstPointX ; i <= Settings.finalPointX; i++) {
+      for ( int j = Settings.firstPointY; j < Settings.finalPointY; j++) {
+
+        // se a cor para pintar nao for branca
+        if( cmap[i][j] != 0 ){
+
+          // se a cor para pintar for diferente da atual
+          if( cmap[i][j] != atualColor ){
+
+            pickColor( cmap[i][j], dr );
+
+            // muda a ultima cor utilizada
+            atualColor = cmap[i][j];
+          }
+
+          // desenha na tela
+          drawPoint( i, j, dr);
+
+          // cooldown
+          try{
+            Thread.sleep( Settings.cooldown );
+          }catch( Exception e ){}
+
+        }// fim if
+
+      }// fim for
+    }// fim for
+
+    /*int i = 0;
     while (i!=15) {
       try {
         Thread.sleep(1000);
@@ -76,6 +108,7 @@ public class Principal{
       pickColor(i, dr);
       i = (i+1)%16;
     }
+    */
   }
 
   public static void drawPoint(int i, int j, DRobot dr) {
