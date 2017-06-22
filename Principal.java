@@ -27,14 +27,14 @@ public class Principal{
   /**
   * Edit a image to pixelCanvas colors
   */
-  public static Image editImage( Image image ){
+  public static Image editImage( Image image, int option ){
 
     Color[][] changed = new Color[ image.getWidth() ][ image.getHeight() ];
 
     // for each pixel
     for ( int i =0; i < changed.length; i++) {
       for ( int j=0 ; j < changed[0].length; j++) {
-        changed[i][j] = palette[ Distance.minEuclidian( image.getMatrix()[i][j], palette ) ];
+        changed[i][j] = palette[ Distance.minDistance( image.getMatrix()[i][j], palette, option ) ];
       }
     }
 
@@ -48,7 +48,7 @@ public class Principal{
     Image goma = new Image( "Fotos/gv3.bmp" );
 
     // image edited
-    Image edit = editImage( goma );
+    Image edit = editImage( goma, Distance.EUCLIDIAN );
 
     // save image in disk
     edit.saveImage( "Fotos/gv3Changed", "bmp" );
