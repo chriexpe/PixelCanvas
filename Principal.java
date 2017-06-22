@@ -24,6 +24,9 @@ public class Principal{
     new Color( 130, 0, 128)
   };
 
+  public static int[][] cmap;
+  public static boolean quit = false;
+
   /**
   * Edit a image to pixelCanvas colors
   */
@@ -42,23 +45,50 @@ public class Principal{
     return ( new Image( changed ) );
   }
 
+  public static void makeCmap( Image image ) {
+    cmap = new int[image.getWidth()][image.getHeight()];
+    for ( int i =0; i < cmap.length; i++) {
+      for ( int j=0 ; j < cmap[0].length; j++) {
+        cmap[i][j] = Distance.minDistance( image.getMatrix()[i][j], palette, Distance.MANHATTAN );
+      }
+    }
+  }
+
   public static void main(String [] args){
 
-    for (int number =1; number <= 5; number++) {
 
-      // original image
-      Image goma = new Image( "Fotos/gv"+number+".bmp" );
+    // original image
+    Image goma = new Image( "Fotos/gomaMelhor.bmp" );
+    makeCmap(goma);
 
-      // image edited
-      Image editChess = editImage( goma, Distance.CHESS );
-      Image editManhattan = editImage( goma, Distance.MANHATTAN );
-      Image editEuclidian = editImage( goma, Distance.EUCLIDIAN );
-
-      // save image in disk
-      editChess.saveImage( "Fotos/gv"+number+"Chess", "bmp" );
-      editManhattan.saveImage( "Fotos/gv"+number+"Manhattan", "bmp" );
-      editEuclidian.saveImage( "Fotos/gv"+number+"Euclidian", "bmp" );
-    }
+    new HorribleGUI();
 
   }// end main
+
+  public static void start() {
+    DRobot dr = new DRobot();
+    int i = 0;
+    while (i!=15) {
+      try {
+        Thread.sleep(1000);
+      }
+      catch (InterruptedException iex) {}
+      pickColor(i, dr);
+      i = (i+1)%16;
+    }
+  }
+
+  public static void drawPoint(int i, int j, DRobot dr) {
+    double delta = Settings.end.x - Settings.start.x;
+    delta /= cmap.length;
+    int x = Settings.start.x + delta*i;
+    int y = Settings.start.y + delta*j;
+    dr.clickAt(x, y);
+  }
+
+  public static void pickColor(int i, DRobot dr) {
+    int x = Settings.color0_pos.x + (i%8)*32;
+    int y = Settings.color0_pos.y + (i/8)*32;
+    dr.clickAt(x, y);
+  }
 }
