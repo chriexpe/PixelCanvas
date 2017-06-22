@@ -72,7 +72,7 @@ public class Principal{
     int atualColor = cmap[0][0];
 
     for ( int i = Settings.firstPointX ; i <= Settings.finalPointX; i++) {
-      for ( int j = Settings.firstPointY; j < Settings.finalPointY; j++) {
+      for ( int j = Settings.firstPointY; j <= Settings.finalPointY; j++) {
 
         // se a cor para pintar nao for branca
         if( cmap[i][j] != 0 ){
@@ -86,6 +86,7 @@ public class Principal{
             atualColor = cmap[i][j];
           }
 
+          System.out.println("Draw point: "+i+","+j);
           // desenha na tela
           drawPoint( i, j, dr);
 
@@ -116,6 +117,8 @@ public class Principal{
     delta /= (cmap.length-1);
     int x = (int) (Settings.start.x + delta*i );
     int y = (int)( Settings.start.y + delta*j );
+
+    System.out.println("xy: "+x+","+y);
     dr.clickAt(x, y);
   }
 
