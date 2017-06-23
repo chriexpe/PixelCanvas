@@ -6,6 +6,7 @@
 ![alt text](http://i.imgur.com/hUee5MY.png "lol")
 
 2. Essa telinha que abre mostra as coordenadas do mouse na tela, agora tem que editar arquivo Settings.java
+
 2.1. Nas coordenadas do Point color0_pos, coloque as coordenadas do seu mouse na primeira cor da barra:
 ![alt text](http://i.imgur.com/XjZiEH2.png "lol")
 
@@ -24,7 +25,8 @@ Cuidado pra não desenhar em um pedaço que alguem ja tiver desenhando, se não 
 2.4. Finalmente tem que setar o cooldown. Nesse lugar que tamo desenhando o cooldown é 145 segundos, aí a variável cooldown
 fica em 145000 (porque é em milisegundos).
 
-3. Roda o programa, e com a pagina do pixelcanvas aberta no fundo naquela posição específica que vc deixou, clica em start. GG
+3. Compila e roda o programa, e com a pagina do pixelcanvas aberta no fundo naquela posição 
+específica que vc deixou, clica em start. GG
 
 
 
