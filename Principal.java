@@ -75,7 +75,8 @@ public class Principal{
       for ( int j = Settings.firstPointY; j <= Settings.finalPointY; j++) {
 
         // se a cor para pintar nao for branca
-        if( cmap[i][j] != 0 ){
+        // e a cor atual do pixel no site for diferente da que vamos pintar
+        if( cmap[i][j] != 0 && isCorIgual( palette[ cmap[i][j] ], i, j, dr ) == false ){
 
           // se a cor para pintar for diferente da atual
           if( cmap[i][j] != atualColor ){
@@ -126,5 +127,25 @@ public class Principal{
     int x = Settings.color0_pos.x + (i%8)*32;
     int y = Settings.color0_pos.y + (i/8)*32;
     dr.clickAt(x, y);
+  }
+  
+  /**
+   * @param colorPallete cor da paleta que vc vai desenhar
+   * @param i coordenada linha na imagem a ser desenhada
+   * @param j coordenada coluna na imagem a ser desenhada
+   * 
+   * Esse metodo verifica se a cor que vai ser desenhada ja existe no
+   * site, porque se existir ignore e passe para a proxima
+   */
+  public static boolean isCorIgual( Color colorPallete, int i, int j, DRobot dr ){
+	  double delta = Settings.end.x - Settings.start.x;
+    delta /= (cmap.length-1);
+    int x = (int) (Settings.start.x + delta*i );
+    int y = (int)( Settings.start.y + delta*j );
+	
+	  // pega o pixel nessa coordenada
+	  Color colorPixel = dr.getPixelColor(x,y);
+	
+	  return colorPixel.equals( colorPallete );
   }
 }
