@@ -19,5 +19,12 @@ class Settings {
   public static final int finalPointY = 92;
 
   // cooldown por pixel, em milisegundos
-  public static final int cooldown = 2000;
+  public static final int cooldown = 145000;
 }
+
+/**
+Posicao inicial do desenho do goma: -2160,80
+Posicao final   do desenho do goma: -2182, 80
+
+O desenho tem o tamanho 78x92 px
+*/
