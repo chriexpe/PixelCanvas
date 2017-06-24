@@ -2,6 +2,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import static java.awt.event.KeyEvent.*;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 /**
  * Implementation using Robot from java.
@@ -207,5 +208,9 @@ public class DRobot {
         robot.keyRelease(keyCode);
         robot.delay(DELAY_MS);
     }
+    
+    public Color getPixelColor( int x, int y ){
+	    return robot.getPixelColor(x,y);
+	}
 
 }
