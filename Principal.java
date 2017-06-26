@@ -76,16 +76,9 @@ public class Principal{
 
         // se a cor para pintar nao for branca
         // e a cor atual do pixel no site for diferente da que vamos pintar
-        if( cmap[i][j] != 0 && isCorIgual( palette[ cmap[i][j] ], i, j, dr ) == false ){
+        if( cmap[i][j] != 0  ){
 
-          // se a cor para pintar for diferente da atual
-          if( cmap[i][j] != atualColor ){
-
-            pickColor( cmap[i][j], dr );
-
-            // muda a ultima cor utilizada
-            atualColor = cmap[i][j];
-          }
+          pickColor( cmap[i][j], dr );
 
           System.out.println("Draw point: "+i+","+j);
           // desenha na tela
@@ -127,42 +120,5 @@ public class Principal{
     int x = Settings.color0_pos.x + (i%8)*32;
     int y = Settings.color0_pos.y + (i/8)*32;
     dr.clickAt(x, y);
-  }
-  
-  /**
-   * @param colorPallete cor da paleta que vc vai desenhar
-   * @param i coordenada linha na imagem a ser desenhada
-   * @param j coordenada coluna na imagem a ser desenhada
-   * 
-   * Esse metodo verifica se a cor que vai ser desenhada ja existe no
-   * site, porque se existir ignore e passe para a proxima
-   */
-  public static boolean isCorIgual( Color colorPallete, int i, int j, DRobot dr ){
-
-    double delta = Settings.end.x - Settings.start.x;
-    delta /= (cmap.length-1);
-    int x = (int) (Settings.start.x + delta*i );
-    int y = (int)( Settings.start.y + delta*j );
-	
-    // pega o pixel nessa coordenada
-    Color colorPixel = dr.getPixelColor(x,y);
-	
-    return colorEqual( colorPixel, colorPallete );
-  }
-
-
-  /**
-   * Esse metodo verifica se uma cor e' igual a outra com uma margem de erro
-   * de 10 para todas as cores
-   */
-  public static boolean colorEqual( Color c1, Color c2 ){
-  
-    boolean redEqual = (c1.getRed() >= c2.getRed() - 10) && ( c1.getRed() <= c2.getRed() + 10 );
-
-    boolean greenEqual = (c1.getGreen() >= c2.getGreen() - 10) && ( c1.getGreen() <= c2.getGreen() + 10 );
-    
-    boolean blueEqual = (c1.getBlue() >= c2.getBlue() - 10) && ( c1.getBlue() <= c2.getBlue() + 10 );
-
-    return ( redEqual && greenEqual && blueEqual );
   }
 }
