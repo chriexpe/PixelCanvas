@@ -12,7 +12,7 @@ import java.awt.Color;
 public class DRobot {
 
     public Robot robot;
-    private static final int DELAY_MS = 5;
+    private static final int DELAY_MS = 100;
 
     public DRobot() {
         try {
