@@ -77,7 +77,11 @@ public class Principal{
         // se a cor para pintar nao for branca
         // e a cor atual do pixel no site for diferente da que vamos pintar
         if( cmap[i][j] != 0  ){
+          
+          // apertar a tecla esc para tirar um possivel pop-up que esteja na tela
+          dr.doType( java.awt.event.KeyEvent.VK_ESCAPE );
 
+          // pega a cor do pixel que vai ser desenhado
           pickColor( cmap[i][j], dr );
 
           System.out.println("Draw point: "+i+","+j);
@@ -85,10 +89,7 @@ public class Principal{
           drawPoint( i, j, dr);
 
           // cooldown
-          try{
-            Thread.sleep( Settings.cooldown );
-          }catch( Exception e ){}
-
+          dr.delay( Settings.cooldown );
         }// fim if
 
       }// fim for
