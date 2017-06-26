@@ -210,7 +210,11 @@ public class DRobot {
     }
     
     public Color getPixelColor( int x, int y ){
-	    return robot.getPixelColor(x,y);
-	}
+    	return robot.getPixelColor(x,y);
+    }
+
+    public void delay( int ms ){
+	robot.delay(ms);    
+    }
 
 }
