@@ -71,8 +71,8 @@ public class Principal{
     // ultima cor usada
     int atualColor = cmap[0][0];
 
-    for ( int i = Settings.firstPointX ; i <= Settings.finalPointX; i++) {
-      for ( int j = Settings.firstPointY; j <= Settings.finalPointY; j++) {
+    for ( int j = Settings.firstPointY; j <= Settings.finalPointY; j++) {
+    	for ( int i = Settings.firstPointX ; i <= Settings.finalPointX; i++) {
 
         // se a cor para pintar nao for branca
         // e a cor atual do pixel no site for diferente da que vamos pintar
