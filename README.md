@@ -19,7 +19,7 @@ OBS2.: Funciona com qualquer zoom, mas a imagem tem 92 pixels de altura e se nã
 com o zoom que tiver usando o programa vai tentar desenhar fora da tela.
 
 2.3 Os firstPointX, firstPointY, finalPointX, finalPointY são as coordenadas da seção retangular que vc quer
-desenhar da imagem. Pra desenhar a imagem inteira seria firstPoint(0,0) e finalPoint(78,92) pois a imagem tem 78x92 pixels.
+desenhar da imagem. Pra desenhar a imagem inteira seria firstPoint(0,0) e finalPoint(77,91) pois a imagem tem 78x92 pixels.
 Cuidado pra não desenhar em um pedaço que alguem ja tiver desenhando, se não é perda de tempo.
 
 2.4 Finalmente tem que setar o cooldown. Nesse lugar que tamo desenhando o cooldown é 145 segundos, aí a variável cooldown
